@@ -6,11 +6,11 @@ public class Main {
             int x = (int)(Math.random()*paquet.size());
             cartes.add(paquet.get(x));
             paquet.remove(x);
-            for (Integer y:cartes){
-                System.out.print(y+" ");
-            }
-            System.out.print("\n");
         }
+        for (Integer y:cartes){
+            System.out.print(y+" ");
+        }
+        System.out.print("\n");
     }
     public int plus_haute_carte()
     {

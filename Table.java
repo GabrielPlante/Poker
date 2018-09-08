@@ -7,6 +7,7 @@ class Scratch {
         {
             paquet.add(i);
         }
+        System.out.print(paquet+"\n");
         Main joueur1 = new Main(paquet);
         System.out.print(paquet+"\n");
         Main joueur2 = new Main(paquet);
