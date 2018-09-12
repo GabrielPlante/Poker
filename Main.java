@@ -15,9 +15,30 @@ public class Main {
     public int valeur_main()
     {
         if (paire() != 0)
-            return 14+paire();
+            return 13+paire();//plus haute carte est entre 1 et 13
+        if (double_paire() != 0)
+            return 26+paire();
         else return plus_haute_carte();
 
+    }
+    private int double_paire()
+    {
+        int a = 0, max = 0;
+        for (Carte y:cartes)
+        {
+            for (Carte x:cartes)
+            {
+                if (y.nombre == x.nombre && y.couleur != x.couleur)
+                {
+                    if (y.nombre >= max)
+                        max = y.nombre;
+                    ++a;
+                }
+            }
+        }
+        if (a == 2)
+            return max;
+        else return 0;
     }
     private int paire()
     {
