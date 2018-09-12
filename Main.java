@@ -24,8 +24,34 @@ public class Main {
     Si la combinaison existe effectivement, renvoyer n*13+la fonction
     n est le nombre de combinaison inferieure a celle que vous codez
      */
+
+    /*
+    Ajout de la suite.
+    Le jeu affiche deux mains de cinq cartes et indique laquelle est la plus forte sans tenir compte des
+    combinaisons: couleur, full, carré et quinte flush.
+    */
+
+    private int suite() {
+        int min = 13;
+        int isAllHere = 0;
+        for (Carte y: cartes){
+            if (y.nombre < min) min = y.nombre;
+        }
+        for (int i = min + 1; i <= min +4; i++){
+            for (Carte y: cartes) {
+                if (y.nombre == i) {
+                    isAllHere += 1;
+                    break;
+                }
+            }
+        }
+
+        if (isAllHere == 5) return min + 4;
+        return 0;
+    }
+
     public int valeur_main()
-    {
+        {
         if (double_paire() != 0)
             return 26+double_paire();//13+13=26
         if (paire() != 0)
