@@ -12,6 +12,18 @@ public class Main {
         }
         System.out.print("\n");
     }
+    /*MANUEL : Implementer une nouvelle fonction :
+    Faire une fonction avec le bon nom (couleur, carre...)
+    Elle doit etre "private int"
+    Elle ne doit pas prendre d'argument
+    Elle doit renvoyer 0 si elle ne trouve pas ce qu'elle cherche
+    Elle doit renvoyer ça valeur (qui est comprise entre 1 et 13 inclus)
+    Ensuite il faut modifier la fonction valeur_main:
+    Il faut tester votre combinaison apres les combinaisons plus fortes et avant les combinaisons plus faible
+    Il faut tester si elle est different de 0 (au quelle cas la combinaison existe dans la main)
+    Si la combinaison existe effectivement, renvoyer n*13+la fonction
+    n est le nombre de combinaison inferieure a celle que vous codez
+     */
     public int valeur_main()
     {
         if (double_paire() != 0)
@@ -35,7 +47,7 @@ public class Main {
                 }
             }
         }
-        if (a == 2) //Si on a trouve 2 paire, on renvoit la valeur
+        if (a == 4) //On teste chaque carte, donc s'il y a une paire, a == 2, si il y a 2 paire, a == 4
             return max;
         else return 0;//Sinon on revoit 0, qui sert de false
     }
