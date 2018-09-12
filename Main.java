@@ -97,4 +97,21 @@ public class Main {
         return x;
     }
     private ArrayList<Carte> cartes = new ArrayList<>();//La liste qui contient les cartes de la main du joueur
+
+    public static String combinaisons(int x) {//Pour le debuggage uniquement, ne pas toucher
+        x = (x-1)/13;
+        switch (x)
+        {
+            case 0: return "Plus grande";
+            case 1: return "Paire";
+            case 2: return "Double paire";
+            case 3: return "Brelan";
+            case 4: return "Suite";
+            case 5: return "Couleur";
+            case 6: return "Full";
+            case 7: return "Carre";
+            case 8: return "Quinte flush";
+            default: return "C'est pas bon";
+        }
+    }
 }
