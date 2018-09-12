@@ -10,6 +10,8 @@ class Scratch {
         Main joueur1 = new Main(paquet);//Initialisation du joueur 1 et 2
         Main joueur2 = new Main(paquet);
         String gagnant = "Le joueur "+((joueur1.valeur_main()>joueur2.valeur_main()) ? "1" : "2") + " gagne !";//operateur ternaire pour voir qui a gagne
+        System.out.println("Valeur de la main du joueur 1 : "+joueur1.valeur_main());
+        System.out.println("Valeur de la main du joueur 2 : "+joueur2.valeur_main());
         System.out.print(gagnant);
     }
 }
