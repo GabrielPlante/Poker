@@ -14,10 +14,10 @@ public class Main {
     }
     public int valeur_main()
     {
+        if (double_paire() != 0)
+            return 26+double_paire();//13+13=26
         if (paire() != 0)
             return 13+paire();//plus haute carte est entre 1 et 13, paire aussi.
-        if (double_paire() != 0)
-            return 26+paire();//13+13=26
         else return plus_haute_carte();
     }
     private int double_paire()
