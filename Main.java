@@ -10,7 +10,6 @@ public class Main {
         for (Carte y:cartes){
             System.out.print(y.nombre+" "); // Pour le debugage
         }
-        System.out.print("\n");
     }
     /*MANUEL : Implementer une nouvelle fonction :
     Faire une fonction avec le bon nom (couleur, carre...)
