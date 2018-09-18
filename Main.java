@@ -82,14 +82,14 @@ public class Main {
         return 0;
     }
 
-    private int couleur()
+    private int couleur()//On teste si la couleur de chaque carte est la meme que la couleur de la carte suivante
     {
-        for (int i = 0; i!=cartes.size()-1;++i)//On teste si la couleur de chaque carte est la meme que la couleur de la carte suivante
+        for (int i = 0; i!=cartes.size()-1;++i)
         {
             if (cartes.get(i).couleur != cartes.get(i+1).couleur)
                 return 0;
         }
-        return cartes.get(0).nombre;
+        return plus_haute_carte();
     }
 
     private int suite() {
@@ -111,7 +111,7 @@ public class Main {
         return 0;
     }
 
-    private int brelan()//Syteme different que paire, on s'assure que chaque carte (i, j, et k) soient differentes
+    private int brelan()//Systeme different que paire, on s'assure que chaque carte (i, j, et k) soient differentes
     {
         for (int i = 0; i!=cartes.size()-2;++i)
         {
