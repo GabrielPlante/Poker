@@ -33,6 +33,8 @@ public class Main {
 
     public int valeur_main()
     {
+        if (carre() != 0)
+            return 91+carre();
         if (full() != 0)
             return 78+full();
         if (couleur() != 0)
@@ -46,6 +48,22 @@ public class Main {
         if (paire() != 0)
             return 13+paire();//plus haute carte est entre 1 et 13, paire aussi.
         else return plus_haute_carte();
+    }
+
+    private int carre()//On teste chaque nombre s'il est 4 fois dans la main
+    {
+        for (int i = 1; i!= 14; ++i)
+        {
+            int nbr = 0;
+            for (Carte x:cartes)
+            {
+                if (x.nombre == i)
+                    ++nbr;
+            }
+            if (nbr == 4)
+                return i;
+        }
+        return 0;
     }
 
     private int full()//On teste si il y a un brelan et une paire, et qu'il soit de nombre different
