@@ -34,7 +34,7 @@ public class Main {
     public int valeur_main()
     {
         if (quinte_flush() != 0)
-            return quinte_flush();
+            return 104+quinte_flush();
         if (carre() != 0)
             return 91+carre();
         if (full() != 0)
