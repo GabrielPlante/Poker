@@ -30,6 +30,20 @@ public class Main {
     combinaisons: couleur, full, carré et quinte flush.
     */
 
+
+    public int valeur_main()
+    {
+        if (suite() != 0)
+            return 52+suite();
+        if (brelan() != 0)
+            return 39+brelan();
+        if (double_paire() != 0)
+            return 26+double_paire();//13+13=26
+        if (paire() != 0)
+            return 13+paire();//plus haute carte est entre 1 et 13, paire aussi.
+        else return plus_haute_carte();
+    }
+
     private int suite() {
         int min = 13;
         int isAllHere = 0;
@@ -49,14 +63,22 @@ public class Main {
         return 0;
     }
 
-    public int valeur_main()
+    private int brelan()//Syteme different que paire, on s'assure que chaque carte (i, j, et k) soient differentes
+    {
+        for (int i = 0; i!=cartes.size()-2;++i)
         {
-        if (double_paire() != 0)
-            return 26+double_paire();//13+13=26
-        if (paire() != 0)
-            return 13+paire();//plus haute carte est entre 1 et 13, paire aussi.
-        else return plus_haute_carte();
+            for (int j = i+1; j < cartes.size(); ++j)
+            {
+                for (int k = j+1; k < cartes.size(); ++k)
+                {
+                    if (cartes.get(i).nombre == cartes.get(j).nombre && cartes.get(j).nombre == cartes.get(k).nombre)
+                        return cartes.get(i).nombre;
+                }
+            }
+        }
+        return 0;
     }
+
     private int double_paire()
     {
         int a = 0, max = 0;// a:nombre de pair, max la valeur de la plus grande paire
