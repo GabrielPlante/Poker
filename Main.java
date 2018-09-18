@@ -33,6 +33,8 @@ public class Main {
 
     public int valeur_main()
     {
+        if (quinte_flush() != 0)
+            return quinte_flush();
         if (carre() != 0)
             return 91+carre();
         if (full() != 0)
@@ -48,6 +50,13 @@ public class Main {
         if (paire() != 0)
             return 13+paire();//plus haute carte est entre 1 et 13, paire aussi.
         else return plus_haute_carte();
+    }
+
+    private int quinte_flush()
+    {
+        if (suite() != 0 && couleur() != 0)
+            return suite();
+        return 0;
     }
 
     private int carre()//On teste chaque nombre s'il est 4 fois dans la main
