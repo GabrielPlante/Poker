@@ -33,6 +33,8 @@ public class Main {
 
     public int valeur_main()
     {
+        if (couleur() != 0)
+            return 65+couleur();
         if (suite() != 0)
             return 52+suite();
         if (brelan() != 0)
@@ -42,6 +44,16 @@ public class Main {
         if (paire() != 0)
             return 13+paire();//plus haute carte est entre 1 et 13, paire aussi.
         else return plus_haute_carte();
+    }
+
+    private int couleur()
+    {
+        for (int i = 0; i!=cartes.size()-1;++i)//On teste si la couleur de chaque carte est la meme que la couleur de la carte suivante
+        {
+            if (cartes.get(i).couleur != cartes.get(i+1).couleur)
+                return 0;
+        }
+        return cartes.get(0).nombre;
     }
 
     private int suite() {
