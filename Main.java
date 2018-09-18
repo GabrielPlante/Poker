@@ -33,6 +33,8 @@ public class Main {
 
     public int valeur_main()
     {
+        if (full() != 0)
+            return 78+full();
         if (couleur() != 0)
             return 65+couleur();
         if (suite() != 0)
@@ -44,6 +46,13 @@ public class Main {
         if (paire() != 0)
             return 13+paire();//plus haute carte est entre 1 et 13, paire aussi.
         else return plus_haute_carte();
+    }
+
+    private int full()//On teste si il y a un brelan et une paire, et qu'il soit de nombre different
+    {
+        if (brelan() != 0 && paire() != 0 && brelan() != paire())
+            return brelan();
+        return 0;
     }
 
     private int couleur()
