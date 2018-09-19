@@ -3,9 +3,8 @@ public class Main {
     public Main(ArrayList<Carte> paquet)//Le constructeur
     {
         for (int i = 0;i!=5;++i){
-            int x = (int)(Math.random()*paquet.size());
-            cartes.add(paquet.get(x));//On associe une carte random du paquet à la main
-            paquet.remove(x);//On l'enleve du paquet
+            cartes.add(paquet.get(0));//On associe une carte random du paquet à la main
+            paquet.remove(0);//On l'enleve du paquet
         }
         for (Carte y:cartes){
             System.out.print(y.nombre+" "); // Pour le debugage

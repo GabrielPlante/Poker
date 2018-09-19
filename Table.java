@@ -1,14 +1,28 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
 class Scratch {
     public static void main(String[] args) {
-        ArrayList<Carte> paquet = new ArrayList<Carte>();//On fait le paquet de carte
-        for (int i = 1;i!=14;++i) {
-            paquet.add(new Carte(i, "Coeur"));
-            paquet.add(new Carte(i, "Carreau"));
-            paquet.add(new Carte(i, "Pique"));
-            paquet.add(new Carte(i, "Trefle"));
+
+        System.out.println("Les cartes sont comprises entre 1 et 13");//Informations donnees a l'utilisateur
+        System.out.println("Les couleurs sont : Coeur, Carreau, Trefle, Pique");
+        System.out.println("Entrez les 5 cartes pour le joueur 1 :");
+        ArrayList<Carte> paquet = new ArrayList<Carte>();//on cree la liste de carte
+
+        while (paquet.size() < 10)
+        {
+            if (paquet.size() == 5) System.out.println("Entrez les 5 cartes pour le joueur 2 :");
+            System.out.println("Carte n° "+(paquet.size()+(paquet.size()<5?1:-4)));
+            System.out.print("Nombre : ");
+            Scanner sc_nombre = new Scanner(System.in);
+            int nombre = sc_nombre.nextInt();
+            System.out.print("Couleur : ");
+            Scanner sc_couleur = new Scanner(System.in);
+            String couleur = sc_couleur.nextLine();
+            if ((couleur.equals("Coeur") || couleur.equals("Carreau") || couleur.equals("Trefle") || couleur.equals("Pique")) && nombre >= 1 && nombre <= 13)
+                paquet.add(new Carte(nombre, couleur));
         }
+
         Main joueur1 = new Main(paquet);//Initialisation du joueur 1 et 2
         System.out.println("");
         Main joueur2 = new Main(paquet);
