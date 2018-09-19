@@ -55,7 +55,7 @@ public class Main {
     private int quinte_flush()
     {
         if (suite() != 0 && couleur() != 0)
-            return suite();
+            return plus_haute_carte();
         return 0;
     }
 
@@ -107,7 +107,7 @@ public class Main {
             }
         }
 
-        if (isAllHere == 5) return min + 4;
+        if (isAllHere == 5) return plus_haute_carte();
         return 0;
     }
 
