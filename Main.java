@@ -83,7 +83,7 @@ public class Main {
 
     private int couleur()//On teste si la couleur de chaque carte est la meme que la couleur de la carte suivante
     {
-        for (int i = 0; i!=cartes.size()-1;++i)
+        for (int i = 0; i!=cartes.size()-2;++i)
         {
             if (cartes.get(i).couleur != cartes.get(i+1).couleur)
                 return 0;
