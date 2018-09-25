@@ -7,7 +7,7 @@ public class Main {
             paquet.remove(0);//On l'enleve du paquet
         }
         for (Carte y:cartes){
-            System.out.print(y.nombre+" "); // Pour le debugage
+            System.out.print(y.nombre+y.couleur+" "); // Pour le debugage
         }
     }
     /*MANUEL : Implementer une nouvelle fonction :
@@ -76,16 +76,19 @@ public class Main {
 
     private int full()//On teste si il y a un brelan et une paire, et qu'il soit de nombre different
     {
-        if (brelan() != 0 && paire() != 0 && brelan() != paire())
-            return brelan();
+        if (brelan() != 0)
+            for (Carte x:cartes)
+                for (Carte y:cartes)
+                    if (x.nombre == y.nombre && !x.couleur.equals(y.couleur) && x.nombre != brelan())
+                        return brelan();
         return 0;
     }
 
     private int couleur()//On teste si la couleur de chaque carte est la meme que la couleur de la carte suivante
     {
-        for (int i = 0; i!=cartes.size()-2;++i)
+        for (int i = 0; i!=cartes.size()-1;++i)
         {
-            if (cartes.get(i).couleur != cartes.get(i+1).couleur)
+            if (!cartes.get(i).couleur.equals(cartes.get(i+1).couleur))
                 return 0;
         }
         return plus_haute_carte();
@@ -106,7 +109,7 @@ public class Main {
             }
         }
 
-        if (isAllHere == 5) return plus_haute_carte();
+        if (isAllHere == 4) return plus_haute_carte();
         return 0;
     }
 
@@ -133,7 +136,7 @@ public class Main {
         {
             for (Carte x:cartes)
             {
-                if (y.nombre == x.nombre && y.couleur != x.couleur)
+                if (y.nombre == x.nombre && !y.couleur.equals(x.couleur))
                 {
                     if (y.nombre >= max)
                         max = y.nombre;
@@ -151,7 +154,7 @@ public class Main {
         {
             for (Carte x:cartes)
             {
-                if (y.nombre == x.nombre && y.couleur != x.couleur)//On regarde si c'est le meme nombre et pas la meme couleur
+                if (y.nombre == x.nombre && !y.couleur.equals(x.couleur))//On regarde si c'est le meme nombre et pas la meme couleur
                     return x.nombre;
             }
         }
