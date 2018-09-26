@@ -4,7 +4,7 @@ import java.util.Scanner;
 class Scratch {
     public static void main(String[] args) {
 
-        System.out.println("Les cartes sont comprises entre 1 et 13");//Informations donnees a l'utilisateur
+        System.out.println("Les cartes sont comprises entre 2 et 14, V, D, R, A sont acceptés");//Informations donnees a l'utilisateur
         System.out.println("Les couleurs sont : Co, Ca, Tr, Pi");
         System.out.println("Entrez les 5 cartes pour le joueur 1 :");
         ArrayList<Carte> paquet = new ArrayList<Carte>();//on cree la liste de carte
@@ -15,21 +15,48 @@ class Scratch {
             System.out.println("Carte n° "+(paquet.size()+(paquet.size()<5?1:-4)));//On passe au carte du deuxieme
             System.out.print("Nombre : ");//On affiche à quelle carte on se trouve
             Scanner sc_nombre = new Scanner(System.in);//Permet de recuperer la valeur donnee par l'utilisateur
-            int nombre = sc_nombre.nextInt();
-            //TODO : faire un systeme permettant d'entrer V, D, R ou A a la place d'un int
+            String indice = sc_nombre.nextLine();
+            int nombre = 0;
+            switch (indice) {
+                case "V":
+                    nombre = 10;
+                    break;
+                case "D":
+                    nombre = 11;
+                    break;
+                case "R":
+                    nombre = 12;
+                    break;
+                case "A":
+                    nombre = 13;
+                    break;
+                default:
+                    try {
+                        nombre = Integer.parseInt(indice);
+                        --nombre;
+                    } catch (NumberFormatException e){
+                        System.out.println("Nombre invalide");
+                        continue;
+                    }
+            }
+            if (nombre < 1 || nombre > 13){
+                System.out.println("Nombre invalide");
+                continue;
+            }
             System.out.print("Couleur : ");
             Scanner sc_couleur = new Scanner(System.in);
             String couleur = sc_couleur.nextLine();
-            if ((couleur.equals("Co") || couleur.equals("Ca") || couleur.equals("Tr") || couleur.equals("Pi")) && nombre >= 1 && nombre <= 13)
-            {
-                boolean nouvelle = true;
-                for (Carte x:paquet)//On verifie que la carte introduite ne soit pas un doublon
-                    if (x.nombre == nombre && x.couleur.equals(couleur))
-                        nouvelle = false;//Si c'est le cas, on l'indique
-                if (!nouvelle)
-                    continue;//Si ce n'est pas une nouvelle carte, on passe au tour de boucle suivant
-                paquet.add(new Carte(nombre, couleur));
+            if (!couleur.equals("Co") && !couleur.equals("Ca") && !couleur.equals("Tr") && !couleur.equals("Pi")){
+                System.out.println("Couleur invalide");
+                continue;
             }
+            boolean nouvelle = true;
+            for (Carte x:paquet)//On verifie que la carte introduite ne soit pas un doublon
+                if (x.nombre == nombre && x.couleur.equals(couleur))
+                    nouvelle = false;//Si c'est le cas, on l'indique
+            if (!nouvelle)
+                continue;//Si ce n'est pas une nouvelle carte, on passe au tour de boucle suivant
+            paquet.add(new Carte(nombre, couleur));
         }
 
         System.out.print("Main 1: ");
